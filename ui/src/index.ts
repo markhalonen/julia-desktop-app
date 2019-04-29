@@ -62,4 +62,35 @@ app.on('activate', () => {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
 
-console.log(app.getVersion())
+
+
+//console.log(app.getAppPath());
+
+var exec = require('child_process').execFile;
+
+const enginePath = isDevMode ? '../engine/builddir/engine' : app.getAppPath() + '/../builddir/engine'
+const engineProcess = exec(enginePath, function (err: any, data: any) {
+  console.log(err)
+  console.log(data.toString());
+});
+
+process.stdin.resume();//so the program will not close instantly
+
+function exitHandler(options: any, exitCode: any) {
+  engineProcess.kill()
+  if (exitCode || exitCode === 0) console.log(exitCode);
+  if (options.exit) process.exit();
+}
+
+//do something when app is closing
+process.on('exit', exitHandler.bind(null, {}));
+
+//catches ctrl+c event
+process.on('SIGINT', exitHandler.bind(null, { exit: true }));
+
+// catches "kill pid" (for example: nodemon restart)
+process.on('SIGUSR1', exitHandler.bind(null, { exit: true }));
+process.on('SIGUSR2', exitHandler.bind(null, { exit: true }));
+
+//catches uncaught exceptions
+process.on('uncaughtException', exitHandler.bind(null, { exit: true }));

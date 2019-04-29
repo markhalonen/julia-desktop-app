@@ -29,7 +29,8 @@
         ]
       },
       "electronPackagerConfig": {
-        "packageManager": "yarn"
+        "packageManager": "yarn",
+        "extraResource": "../engine/builddir"
       },
       "electronWinstallerConfig": {
         "name": "julia_desktop_app"
