@@ -1,0 +1,1 @@
+Build: `julia --project -e 'using PackageCompiler; PackageCompiler.build_executable("engine.jl", "engine")'`
