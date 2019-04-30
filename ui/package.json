@@ -48,14 +48,15 @@
     }
   },
   "dependencies": {
+    "@material-ui/core": "^3.9.3",
     "@types/electron-devtools-installer": "^2.0.2",
     "@types/react": "^0.14.55",
     "@types/react-dom": "^0.14.20",
     "electron-compile": "^6.4.4",
     "electron-devtools-installer": "^2.1.0",
     "electron-squirrel-startup": "^1.0.0",
-    "react": "^15.4.1",
-    "react-dom": "^15.4.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "react-hot-loader": "^3.0.0-beta.6",
     "tslib": "^1.4.0",
     "zeromq": "^5.1.0"

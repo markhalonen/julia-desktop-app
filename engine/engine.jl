@@ -2,6 +2,7 @@ using Joseki, JSON, HTTP
 
 # 'http://localhost:8000/pow/?x=2&y=3'
 function pow(req::HTTP.Request)
+    sleep(2)
     j = HTTP.queryparams(HTTP.URI(req.target))
     has_all_required_keys(["x", "y"], j) || return error_responder(req, "You need to specify values for x and y!")
     x = parse(Float32, j["x"])
